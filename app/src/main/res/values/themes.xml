@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Theme.FoodySplash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_app_icon_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.FoodyApp</item>
+    </style>
+
     <style name="Theme.FoodyApp" parent="android:Theme.Material.Light.NoActionBar" />
 </resources>
