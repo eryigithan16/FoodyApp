@@ -44,7 +44,7 @@ fun OnboardingScreen(modifier: Modifier = Modifier) {
         ) {
             Image(
                 imageVector = ImageVector.vectorResource(R.drawable.ic_foody),
-                contentDescription = "Icon 1",
+                contentDescription = "App Icon",
                 modifier = Modifier.size(30.dp)
             )
             Box(
