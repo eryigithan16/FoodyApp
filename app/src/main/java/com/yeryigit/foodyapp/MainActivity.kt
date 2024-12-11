@@ -26,9 +26,8 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         setContent {
             FoodyAppTheme {
-                val pagerState = rememberPagerState(pageCount = { 3 })
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    OnboardingScreen(modifier = Modifier.padding(innerPadding), pagerState = pagerState)
+                    OnboardingScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }

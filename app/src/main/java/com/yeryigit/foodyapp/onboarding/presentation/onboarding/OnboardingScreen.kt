@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalFoundationApi::class)
-
 package com.yeryigit.foodyapp.onboarding.presentation.onboarding
 
 import android.util.Log
@@ -17,8 +15,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.pager.HorizontalPager
-import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
@@ -51,14 +49,14 @@ import com.yeryigit.foodyapp.ui.theme.white
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnboardingScreen(modifier: Modifier = Modifier, pagerState: PagerState) {
+fun OnboardingScreen(modifier: Modifier = Modifier) {
     val onboardingIconList = remember {
         listOf(R.drawable.onboarding_first, R.drawable.onboarding_second, R.drawable.onboarding_three)
     }
     val onboardingTitleList = remember {
         listOf(R.string.onboarding_first_title, R.string.onboarding_second_title, R.string.onboarding_third_title)
     }
-
+    val pagerState = rememberPagerState(pageCount = { 3 })
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -108,14 +106,14 @@ fun OnboardingScreen(modifier: Modifier = Modifier, pagerState: PagerState) {
                     )
                 }
             }
-            Row(
+            LazyRow (
                 Modifier
                     .wrapContentHeight()
                     .fillMaxWidth()
                     .padding(bottom = 8.dp),
                 horizontalArrangement = Arrangement.Center
             ) {
-                repeat(pagerState.pageCount) { iteration ->
+                items(pagerState.pageCount) { iteration ->
                     val color = if (pagerState.currentPage == iteration) accentColor else Color.LightGray
                     Box(
                         modifier = Modifier
@@ -134,6 +132,6 @@ fun OnboardingScreen(modifier: Modifier = Modifier, pagerState: PagerState) {
 @Composable
 fun OnBoardingScreenPreview() {
     FoodyAppTheme {
-        OnboardingScreen(pagerState = rememberPagerState(pageCount = { 3 }))
+        OnboardingScreen()
     }
 }
