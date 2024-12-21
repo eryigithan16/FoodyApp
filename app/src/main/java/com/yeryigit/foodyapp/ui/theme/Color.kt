@@ -13,7 +13,7 @@ val Pink40 = Color(0xFF7D5260)
 
 
 val primaryColor = Color(0xFFFE554A)
-val gradientBrush = Brush.linearGradient(listOf(Color(0xFFFF774C), Color(0xFFF9881F)))
+val gradientBrush = Brush.linearGradient(listOf(Color(0xFFF9881F), Color(0xFFFF774C)))
 val accentColor = Color(0xFF0B735F)
 val softBlack = Color(0xFF2A3037)
 val darkGray = Color(0xFFC6C9CC)
