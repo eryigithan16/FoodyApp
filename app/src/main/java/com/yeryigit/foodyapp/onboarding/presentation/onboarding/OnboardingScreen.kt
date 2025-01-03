@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -30,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
@@ -98,7 +100,9 @@ fun OnboardingScreen(modifier: Modifier = Modifier) {
                     Image(
                         painter = painterResource(id = onboardingIconList[page]),
                         contentDescription = "Onboarding images",
-                        modifier = Modifier.size(335.dp, 255.dp),
+                        modifier = Modifier
+                            .fillMaxWidth(0.9f)  // ekranın %90'ini kapla
+                            .aspectRatio(335f / 255f)  // oranı koru
                     )
                 }
             }
