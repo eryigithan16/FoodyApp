@@ -68,7 +68,7 @@ fun OnboardingScreen(modifier: Modifier = Modifier) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(15.dp),
                 contentAlignment = Alignment.Center
             ) {
                 Image(
