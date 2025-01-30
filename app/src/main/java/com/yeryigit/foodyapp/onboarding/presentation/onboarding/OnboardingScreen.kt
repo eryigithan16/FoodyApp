@@ -1,7 +1,5 @@
 package com.yeryigit.foodyapp.onboarding.presentation.onboarding
 
-import android.util.Log
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -48,9 +46,12 @@ import com.yeryigit.foodyapp.ui.theme.accentColor
 import com.yeryigit.foodyapp.ui.theme.gradientBrush
 import com.yeryigit.foodyapp.ui.theme.white
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnboardingScreen(modifier: Modifier = Modifier) {
+fun OnboardingScreen(
+    modifier: Modifier = Modifier,
+    onClickCreateAccount: () -> Unit,
+    onClickLogin: () -> Unit
+) {
     val onboardingIconList = remember {
         listOf(R.drawable.onboarding_first, R.drawable.onboarding_second, R.drawable.onboarding_three)
     }
@@ -127,7 +128,7 @@ fun OnboardingScreen(modifier: Modifier = Modifier) {
             }
             Spacer(modifier = Modifier.height(40.dp))
             Button(
-                onClick = { Log.e("@@@", "create buton tıklandı") },
+                onClick = { onClickCreateAccount.invoke() },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp),
@@ -155,7 +156,7 @@ fun OnboardingScreen(modifier: Modifier = Modifier) {
             }
             Spacer(modifier = Modifier.height(20.dp))
             Button(
-                onClick = { Log.e("@@@", "login buton tıklandı") },
+                onClick = { onClickLogin.invoke() },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp)
@@ -179,6 +180,9 @@ fun OnboardingScreen(modifier: Modifier = Modifier) {
 @Composable
 fun OnBoardingScreenPreview() {
     FoodyAppTheme {
-        OnboardingScreen()
+        OnboardingScreen(
+            onClickCreateAccount = {},
+            onClickLogin = {}
+        )
     }
 }

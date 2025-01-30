@@ -16,6 +16,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
+import com.yeryigit.foodyapp.core.navigation.Screen
+import com.yeryigit.foodyapp.core.navigation.SetupNavGraph
 import com.yeryigit.foodyapp.onboarding.presentation.onboarding.OnboardingScreen
 import com.yeryigit.foodyapp.ui.theme.FoodyAppTheme
 
@@ -26,8 +29,13 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         setContent {
             FoodyAppTheme {
+                val navController = rememberNavController()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    OnboardingScreen(modifier = Modifier.padding(innerPadding))
+                    SetupNavGraph(
+                        startDestination = Screen.Onboarding,
+                        modifier = Modifier.padding(innerPadding),
+                        navController = navController
+                    )
                 }
             }
         }
