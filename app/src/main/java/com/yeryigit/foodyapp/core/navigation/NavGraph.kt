@@ -1,23 +1,22 @@
 package com.yeryigit.foodyapp.core.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.yeryigit.foodyapp.onboarding.presentation.forgotpassword.ForgetPasswordScreen
+import com.yeryigit.foodyapp.onboarding.presentation.login.LoginScreen
 import com.yeryigit.foodyapp.onboarding.presentation.onboarding.OnboardingScreen
 import com.yeryigit.foodyapp.onboarding.presentation.register.RegisterScreen
 
 @Composable
 fun SetupNavGraph(
     startDestination: Screen,
-    modifier: Modifier,
     navController: NavHostController
 ) {
     NavHost(startDestination = startDestination, navController = navController) {
-        splashRoute(
-            modifier = modifier,
+        onboardingRoute(
             onClickCreateAccount = {
                 navController.navigate(Screen.Register)
             },
@@ -25,31 +24,62 @@ fun SetupNavGraph(
                 navController.navigate(Screen.Login)
             }
         )
-        registerRoute()
-        loginRoute()
+        registerRoute(
+            onClickSignInWithGoogle = { },
+            onClickCreateAnAccount = { navController.navigate(Screen.Register) },
+            onClickLogin = { navController.navigate(Screen.Login) }
+        )
+        loginRoute(
+            onClickSignInWithGoogle = { },
+            onClickLogin = { navController.navigate(Screen.Login) },
+            onClickForgotMyPassword = { navController.navigate(Screen.ForgotPassword) }
+        )
+        forgotPasswordRoute()
     }
 }
 
-fun NavGraphBuilder.splashRoute(
-    modifier: Modifier,
+fun NavGraphBuilder.onboardingRoute(
     onClickCreateAccount: () -> Unit,
     onClickLogin: () -> Unit
 ) {
     composable<Screen.Onboarding> {
         OnboardingScreen(
-            modifier = modifier,
             onClickCreateAccount = onClickCreateAccount,
             onClickLogin = onClickLogin
         )
     }
 }
 
-fun NavGraphBuilder.registerRoute() {
+fun NavGraphBuilder.registerRoute(
+    onClickSignInWithGoogle: () -> Unit,
+    onClickCreateAnAccount: () -> Unit,
+    onClickLogin: () -> Unit
+) {
     composable<Screen.Register> {
-        RegisterScreen()
+        RegisterScreen(
+            onClickSignInWithGoogle = onClickSignInWithGoogle,
+            onClickCreateAnAccount = onClickCreateAnAccount,
+            onClickLogin = onClickLogin
+        )
     }
 }
 
-fun NavGraphBuilder.loginRoute(){
-    composable<Screen.Login> {}
+fun NavGraphBuilder.loginRoute(
+    onClickSignInWithGoogle: () -> Unit,
+    onClickLogin: () -> Unit,
+    onClickForgotMyPassword: () -> Unit
+) {
+    composable<Screen.Login> {
+        LoginScreen(
+            onClickSignInWithGoogle = onClickSignInWithGoogle,
+            onClickLogin = onClickLogin,
+            onClickForgotMyPassword = onClickForgotMyPassword
+        )
+    }
+}
+
+fun NavGraphBuilder.forgotPasswordRoute(){
+    composable<Screen.ForgotPassword> {
+        ForgetPasswordScreen()
+    }
 }

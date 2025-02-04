@@ -7,6 +7,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.rememberPagerState
@@ -25,35 +26,18 @@ import com.yeryigit.foodyapp.ui.theme.FoodyAppTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        enableEdgeToEdge() // Bunu silersen bottom ve status bar rengini değiştir
         installSplashScreen()
         setContent {
             FoodyAppTheme {
                 val navController = rememberNavController()
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Column (modifier = Modifier.fillMaxSize()) {
                     SetupNavGraph(
                         startDestination = Screen.Onboarding,
-                        modifier = Modifier.padding(innerPadding),
                         navController = navController
                     )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    FoodyAppTheme {
-        Greeting("Android")
     }
 }

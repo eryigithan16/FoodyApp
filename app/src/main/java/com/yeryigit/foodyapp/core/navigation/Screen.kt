@@ -10,4 +10,6 @@ sealed class Screen {
     data object Register : Screen()
     @Serializable
     data object Login : Screen()
+    @Serializable
+    data object ForgotPassword : Screen()
 }

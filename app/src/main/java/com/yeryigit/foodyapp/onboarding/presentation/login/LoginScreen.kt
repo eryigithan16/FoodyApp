@@ -1,4 +1,4 @@
-package com.yeryigit.foodyapp.onboarding.presentation.register
+package com.yeryigit.foodyapp.onboarding.presentation.login
 
 import android.util.Log
 import androidx.compose.foundation.Image
@@ -42,14 +42,13 @@ import com.yeryigit.foodyapp.ui.theme.gradientBrush
 import com.yeryigit.foodyapp.ui.theme.white
 
 @Composable
-fun RegisterScreen(
+fun LoginScreen(
     onClickSignInWithGoogle: () -> Unit,
-    onClickCreateAnAccount: () -> Unit,
-    onClickLogin: () -> Unit
+    onClickLogin: () -> Unit,
+    onClickForgotMyPassword: () -> Unit
 ) {
     val emailTextState = remember { mutableStateOf("") }
     val passwordTextState = remember { mutableStateOf("") }
-    val confirmPasswordTextState = remember { mutableStateOf("") }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -66,11 +65,11 @@ fun RegisterScreen(
                 .padding(start = 50.dp, end = 35.dp)
         ) {
             Text(
-                modifier = Modifier, text = "Create an account", fontFamily = DmSans, fontWeight = FontWeight.Bold, fontSize = 24.sp
+                modifier = Modifier, text = "Login to your account", fontFamily = DmSans, fontWeight = FontWeight.Bold, fontSize = 24.sp
             )
             Spacer(modifier = Modifier.height(30.dp))
             Text(
-                text = "Welcome friend, enter your details so lets get started in ordering food.",
+                text = "Good to see you again, enter your details below to continue ordering.",
                 fontFamily = SkModernist,
                 fontWeight = FontWeight.Normal,
                 fontSize = 14.sp
@@ -85,8 +84,6 @@ fun RegisterScreen(
             CustomTextField(title = "Email Address", placeHolder = "Enter email", textState = emailTextState)
             Spacer(modifier = Modifier.height(20.dp))
             CustomTextField(title = "Password", placeHolder = "Enter password", textState = passwordTextState)
-            Spacer(modifier = Modifier.height(20.dp))
-            CustomTextField(title = "Confirm Password", placeHolder = "Confirm Password", textState = confirmPasswordTextState)
         }
         Column(
             verticalArrangement = Arrangement.Bottom, modifier = Modifier
@@ -125,7 +122,7 @@ fun RegisterScreen(
             }
             Spacer(modifier = Modifier.height(20.dp))
             Button(
-                onClick = onClickCreateAnAccount,
+                onClick = onClickLogin,
                 modifier = Modifier.padding(horizontal = 20.dp),
                 contentPadding = PaddingValues(),
                 colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)
@@ -139,14 +136,14 @@ fun RegisterScreen(
                         ), contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "Create an account", fontFamily = SkModernist, fontWeight = FontWeight.Bold, fontSize = 14.sp
+                        text = "Log In", fontFamily = SkModernist, fontWeight = FontWeight.Bold, fontSize = 14.sp
                     )
                 }
 
             }
             Spacer(modifier = Modifier.height(20.dp))
             Button(
-                onClick = onClickLogin,
+                onClick = onClickForgotMyPassword,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 20.dp)
@@ -155,7 +152,7 @@ fun RegisterScreen(
                 contentPadding = PaddingValues(),
             ) {
                 Text(
-                    text = "Log In", fontFamily = SkModernist, fontWeight = FontWeight.Bold, fontSize = 14.sp, color = Color.Red
+                    text = "I forgot my password", fontFamily = SkModernist, fontWeight = FontWeight.Bold, fontSize = 14.sp, color = Color.Red
                 )
             }
         }
@@ -164,10 +161,10 @@ fun RegisterScreen(
 
 @Preview
 @Composable
-private fun PreviewRegisterScreen() {
-    RegisterScreen(
+fun PreviewLoginScreen(modifier: Modifier = Modifier) {
+    LoginScreen(
         onClickSignInWithGoogle = {},
-        onClickCreateAnAccount = {},
-        onClickLogin = {}
+        onClickLogin = {},
+        onClickForgotMyPassword = {}
     )
 }
