@@ -5,6 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.yeryigit.foodyapp.home.presentation.HomeScreen
 import com.yeryigit.foodyapp.onboarding.presentation.forgotpassword.ForgetPasswordScreen
 import com.yeryigit.foodyapp.onboarding.presentation.login.LoginScreen
 import com.yeryigit.foodyapp.onboarding.presentation.onboarding.OnboardingScreen
@@ -27,14 +28,15 @@ fun SetupNavGraph(
         registerRoute(
             onClickSignInWithGoogle = { },
             onClickCreateAnAccount = { navController.navigate(Screen.Register) },
-            onClickLogin = { navController.navigate(Screen.Login) }
+            onClickLogin = { navController.navigate(Screen.Home) }
         )
         loginRoute(
             onClickSignInWithGoogle = { },
-            onClickLogin = { navController.navigate(Screen.Login) },
+            onClickLogin = { navController.navigate(Screen.Home) },
             onClickForgotMyPassword = { navController.navigate(Screen.ForgotPassword) }
         )
         forgotPasswordRoute()
+        homeRoute()
     }
 }
 
@@ -78,8 +80,14 @@ fun NavGraphBuilder.loginRoute(
     }
 }
 
-fun NavGraphBuilder.forgotPasswordRoute(){
+fun NavGraphBuilder.forgotPasswordRoute() {
     composable<Screen.ForgotPassword> {
         ForgetPasswordScreen()
+    }
+}
+
+fun NavGraphBuilder.homeRoute() {
+    composable<Screen.Home> {
+        HomeScreen()
     }
 }

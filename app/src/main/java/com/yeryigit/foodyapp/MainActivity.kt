@@ -26,7 +26,7 @@ import com.yeryigit.foodyapp.ui.theme.FoodyAppTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge() // Bunu silersen bottom ve status bar rengini değiştir
+        //enableEdgeToEdge() // Bottom ve status bar rengini değiştir, çünkü bunu yorum satırına aldık, almasak o kısımları da kullanabilir oluyodum
         installSplashScreen()
         setContent {
             FoodyAppTheme {

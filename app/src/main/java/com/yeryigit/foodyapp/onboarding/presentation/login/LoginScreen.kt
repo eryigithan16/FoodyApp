@@ -139,7 +139,6 @@ fun LoginScreen(
                         text = "Log In", fontFamily = SkModernist, fontWeight = FontWeight.Bold, fontSize = 14.sp
                     )
                 }
-
             }
             Spacer(modifier = Modifier.height(20.dp))
             Button(
