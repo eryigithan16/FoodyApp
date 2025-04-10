@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.yeryigit.foodyapp.R
 import com.yeryigit.foodyapp.ui.theme.black
-import com.yeryigit.foodyapp.ui.theme.primaryColor
+import com.yeryigit.foodyapp.ui.theme.foodyOrange
 
 @Composable
 fun HeaderView(
@@ -33,7 +33,7 @@ fun HeaderView(
     isHaveAddressArea: Boolean = true,
     secondIcon: ImageVector = Icons.TwoTone.Face,
     paddingHorizontal: Dp = 20.dp,
-    paddingTop: Dp = 35.dp
+    paddingTop: Dp = 0.dp
 ) {
     Row(
         modifier = Modifier
@@ -60,7 +60,7 @@ fun HeaderView(
                         contentDescription = "down arrow"
                     )
                 }
-                Text("8.dilek sokak, Ortabağlar", maxLines = 1, overflow = TextOverflow.Ellipsis, color = primaryColor)
+                Text("8.dilek sokak, Ortabağlar", maxLines = 1, overflow = TextOverflow.Ellipsis, color = foodyOrange)
             }
         }
         Icon(

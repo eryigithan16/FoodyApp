@@ -22,7 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun HomeCategoryItem(isSelected: Boolean) { //Buraya parametre olarak "CategoryData" gibi bir şey vercez. hangi klasöre olduğuna karar veririz sonra
+fun HomeCategoryItem(isSelected: Boolean) { //Buraya parametre olarak "CategoryData" gibi bir şey vercez. hangi klasöre olduğuna karar veririz sonra. içinde icon, title, iç renk, dış renk olcak
     Box(
         modifier = Modifier
             .border(

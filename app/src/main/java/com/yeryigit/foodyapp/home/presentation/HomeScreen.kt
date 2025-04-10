@@ -3,6 +3,7 @@ package com.yeryigit.foodyapp.home.presentation
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -13,13 +14,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.yeryigit.foodyapp.home.presentation.components.HomeCategoryItem
 import com.yeryigit.foodyapp.ui.components.HeaderView
 import com.yeryigit.foodyapp.ui.theme.DmSans
+import com.yeryigit.foodyapp.ui.theme.SkModernist
 import com.yeryigit.foodyapp.ui.theme.gray
+import com.yeryigit.foodyapp.ui.theme.foodyOrange
 import com.yeryigit.foodyapp.ui.theme.white
 
 @Composable
@@ -52,6 +56,29 @@ fun HomeScreen() {
                 HomeCategoryItem(it == "true")
             }
         }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 20.dp, end = 20.dp, top = 40.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = "Popular restaurants",
+                fontFamily = DmSans,
+                fontWeight = FontWeight.Bold,
+                color = gray,
+                fontSize = 16.sp
+            )
+            Text(
+                text = "View all(29)",
+                fontFamily = SkModernist,
+                fontWeight = FontWeight.Normal,
+                color = foodyOrange,
+                fontSize = 14.sp,
+                textDecoration = TextDecoration.Underline
+            )
+        }
+        //Lazy Row ve içindeki item yapılcak, önce item'dan başlarsın burada kaldım en son TODO
     }
 }
 
