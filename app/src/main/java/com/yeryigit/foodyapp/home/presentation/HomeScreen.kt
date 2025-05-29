@@ -1,6 +1,8 @@
 package com.yeryigit.foodyapp.home.presentation
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.rememberScrollableState
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,6 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -36,49 +40,56 @@ fun HomeScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         HeaderView()
-        Text(
-            text = "Enjoy Delicious food",
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, top = 40.dp),
-            fontFamily = DmSans,
-            fontWeight = FontWeight.Bold,
-            color = gray,
-            fontSize = 24.sp
-        )
-        LazyRow(
-            modifier = Modifier
-                .padding(start = 20.dp, top = 50.dp)
-                .align(Alignment.Start),
-            horizontalArrangement = Arrangement.spacedBy(20.dp)
-        ) {
-            items(list) {
-                HomeCategoryItem(it == "true")
-            }
-        }
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 20.dp, end = 20.dp, top = 40.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+                .fillMaxSize()
+                .background(white)
+                .verticalScroll(state = rememberScrollState()),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Popular restaurants",
+                text = "Enjoy Delicious food",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, top = 40.dp),
                 fontFamily = DmSans,
                 fontWeight = FontWeight.Bold,
                 color = gray,
-                fontSize = 16.sp
+                fontSize = 24.sp
             )
-            Text(
-                text = "View all(29)",
-                fontFamily = SkModernist,
-                fontWeight = FontWeight.Normal,
-                color = foodyOrange,
-                fontSize = 14.sp,
-                textDecoration = TextDecoration.Underline
-            )
+            LazyRow(
+                modifier = Modifier
+                    .padding(start = 20.dp, top = 50.dp)
+                    .align(Alignment.Start),
+                horizontalArrangement = Arrangement.spacedBy(20.dp)
+            ) {
+                items(list) {
+                    HomeCategoryItem(it == "true")
+                }
+            }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 20.dp, end = 20.dp, top = 40.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                Text(
+                    text = "Popular restaurants",
+                    fontFamily = DmSans,
+                    fontWeight = FontWeight.Bold,
+                    color = gray,
+                    fontSize = 16.sp
+                )
+                Text(
+                    text = "View all(29)",
+                    fontFamily = SkModernist,
+                    fontWeight = FontWeight.Normal,
+                    color = foodyOrange,
+                    fontSize = 14.sp,
+                    textDecoration = TextDecoration.Underline
+                )
+            }
         }
-        //Lazy Row ve içindeki item yapılcak, önce item'dan başlarsın burada kaldım en son TODO
     }
 }
 
